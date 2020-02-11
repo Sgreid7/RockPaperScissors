@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace RockPaperScissors
 {
@@ -6,6 +7,14 @@ namespace RockPaperScissors
   {
     static void Main(string[] args)
     {
+      static string displayComputerInput(string input)
+      {
+        // Display computer input to console
+        var message = "The computer chose " + input + ".";
+        return message;
+      }
+
+
       // Welcome user
       Console.WriteLine("Welcome to the fantastic Rock, Paper, Scissors game!");
 
@@ -16,7 +25,8 @@ namespace RockPaperScissors
         var winMessage = "You win!";
         var loseMessage = "You lose! Try again.";
         // Inform the user of 3 levels of difficulty
-        Console.WriteLine("This game has 3 levels of difficulty: Easy, Normal, and Impossible. Please select an option");
+        Console.WriteLine("This game has 3 levels of difficulty: Easy, Normal, and Impossible. Please select an option.");
+        // Ask user to choose difficulty
         var difficulty = Console.ReadLine().ToLower();
         // valid the difficulty level 
         if (difficulty != "easy" && difficulty != "normal" && difficulty != "impossible")
@@ -25,7 +35,7 @@ namespace RockPaperScissors
           difficulty = Console.ReadLine().ToLower();
         }
         // Inform user about 3 choices: rock paper or scissors
-        Console.WriteLine("Please select an option. You have three choices: rock, paper, or scissors");
+        Console.WriteLine("Please select an option. You have three choices: rock, paper, or scissors.");
         // Get feedback from user and store it in userInput variable
         var userInput = Console.ReadLine().ToLower();
         // validate userInput
@@ -37,9 +47,17 @@ namespace RockPaperScissors
         }
 
         // Display user input to console
-        Console.WriteLine("You chose " + userInput);
+        // Console.WriteLine("You chose " + userInput + ".");
+
+        // var gameresults = new Dictionary<string, string>{
+        //   new {"rock-rock", "tie game"}
+        // }
+
+        // Console.WriteLine(gameresults[userInput + "-" + computerChoice])
+
 
         // Set up game difficulties
+        // Declare computer input variable to later assign a value in the if statements
         var computerInput = "";
         if (difficulty == "easy")
         {
@@ -47,21 +65,21 @@ namespace RockPaperScissors
           {
             computerInput = "scissors";
             // Display computer input to console
-            Console.WriteLine("The computer chose " + computerInput);
+            Console.WriteLine(displayComputerInput(computerInput));
             Console.WriteLine(winMessage);
           }
           else if (userInput == "paper")
           {
             computerInput = "rock";
             // Display computer input to console
-            Console.WriteLine("The computer chose " + computerInput);
+            Console.WriteLine(displayComputerInput(computerInput));
             Console.WriteLine(winMessage);
           }
           else if (userInput == "scissors")
           {
             computerInput = "paper";
             // Display computer input to console
-            Console.WriteLine("The computer chose " + computerInput);
+            Console.WriteLine(displayComputerInput(computerInput));
             Console.WriteLine(winMessage);
           }
         }
@@ -130,21 +148,21 @@ namespace RockPaperScissors
           {
             computerInput = "paper";
             // Display computer input to console
-            Console.WriteLine("The computer chose " + computerInput);
+            Console.WriteLine(displayComputerInput(computerInput));
             Console.WriteLine(loseMessage);
           }
           else if (userInput == "paper")
           {
             computerInput = "scissors";
             // Display computer input to console
-            Console.WriteLine("The computer chose " + computerInput);
+            Console.WriteLine(displayComputerInput(computerInput));
             Console.WriteLine(loseMessage);
           }
           else if (userInput == "scissors")
           {
             computerInput = "rock";
             // Display computer input to console
-            Console.WriteLine("The computer chose " + computerInput);
+            Console.WriteLine(displayComputerInput(computerInput));
             Console.WriteLine(loseMessage);
           }
         }
@@ -152,7 +170,7 @@ namespace RockPaperScissors
         // Ask user if they want to continue playing
         Console.WriteLine("Would you like to play again?");
         var answer = Console.ReadLine().ToLower();
-
+        // Validate the answer and determine if to stop the game
         if (answer != "yes" && answer != "no")
         {
           Console.WriteLine("Not a valid answer, please reply with yes or no");
